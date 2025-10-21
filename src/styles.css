@@ -1,8 +1,6 @@
 body {
     background-color: aliceblue;
 }
-#screen { 
-    background-color: orange;
-    height: 50vh;
-    width: 50vw;
+h1 {
+    text-align: center;
 }

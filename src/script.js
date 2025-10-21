@@ -12,8 +12,13 @@ function task(title, day, duration, description) {
 const addTask = document.querySelector("#addTask");
     addTask.addEventListener("click", function() {
     let addTaskForm = document.querySelector("#new-task-form");
-    addTaskForm.style.display = "grid";
-    addTaskForm.style.gap = "1em";
+    if(addTaskForm.style.display === 'none') {
+        addTaskForm.style.display = "grid";
+        addTaskForm.style.gap = "1em";
+    } else {
+        addTaskForm.style.display = 'none';
+        addTaskForm.style.gap = 'none';
+    }
     })
 
 document.querySelector("#new-task-form").addEventListener("submit", function(event) {
@@ -21,10 +26,10 @@ document.querySelector("#new-task-form").addEventListener("submit", function(eve
     let day = document.querySelector("#day").value;
     let duration = document.querySelector("#duration").value;
     let description = document.querySelector("#description").value;
-    let newTasks = new task ((title) + ("/") + (day) + ("/") + (duration) + ("/") + (description))
+    let newTasks = ((title) + ("/") + (day) + ("/") + (duration) + ("/") + (description))
     const newDiv = document.createElement("div");
-    newDiv.innerHTML = (newTasks.textcontent);
-    document.body.appendChild(newDiv);
+    newDiv.innerHTML = (newTasks);
+    list.appendChild((newDiv));
     event.preventDefault();
     console.log(newTasks);
 })
@@ -35,4 +40,7 @@ document.querySelector("#clear-btn").addEventListener("click", function() {
     duration.value = "";
     description.value = "";
 })
-
+document.querySelector('#clear-screen-btn').addEventListener('click', function() {
+    const list = document.querySelector("#list");
+    list.textContent = "";
+})
